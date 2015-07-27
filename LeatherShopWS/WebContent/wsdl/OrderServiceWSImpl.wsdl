@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getCustInfo">
+    <complexType>
+     <sequence>
+      <element name="orderId" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustInfoReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="getOrders">
+    <complexType>
+     <sequence>
+      <element name="date" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOrdersResponse">
+    <complexType>
+     <sequence>
+      <element name="getOrdersReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCustomersWithPendingOrders">
+    <complexType/>
+   </element>
+   <element name="getCustomersWithPendingOrdersResponse">
+    <complexType>
+     <sequence>
+      <element name="getCustomersWithPendingOrdersReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProductsWithPendingOrders">
+    <complexType/>
+   </element>
+   <element name="getProductsWithPendingOrdersResponse">
+    <complexType>
+     <sequence>
+      <element name="getProductsWithPendingOrdersReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProductsWithoutOrders">
+    <complexType/>
+   </element>
+   <element name="getProductsWithoutOrdersResponse">
+    <complexType>
+     <sequence>
+      <element name="getProductsWithoutOrdersReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getCustInfoResponse">
+
+      <wsdl:part element="impl:getCustInfoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustInfoRequest">
+
+      <wsdl:part element="impl:getCustInfo" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomersWithPendingOrdersResponse">
+
+      <wsdl:part element="impl:getCustomersWithPendingOrdersResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductsWithoutOrdersResponse">
+
+      <wsdl:part element="impl:getProductsWithoutOrdersResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductsWithPendingOrdersRequest">
+
+      <wsdl:part element="impl:getProductsWithPendingOrders" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrdersRequest">
+
+      <wsdl:part element="impl:getOrders" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCustomersWithPendingOrdersRequest">
+
+      <wsdl:part element="impl:getCustomersWithPendingOrders" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductsWithoutOrdersRequest">
+
+      <wsdl:part element="impl:getProductsWithoutOrders" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductsWithPendingOrdersResponse">
+
+      <wsdl:part element="impl:getProductsWithPendingOrdersResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOrdersResponse">
+
+      <wsdl:part element="impl:getOrdersResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OrderServiceWSImpl">
+
+      <wsdl:operation name="getCustInfo">
+
+         <wsdl:input message="impl:getCustInfoRequest" name="getCustInfoRequest"/>
+
+         <wsdl:output message="impl:getCustInfoResponse" name="getCustInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOrders">
+
+         <wsdl:input message="impl:getOrdersRequest" name="getOrdersRequest"/>
+
+         <wsdl:output message="impl:getOrdersResponse" name="getOrdersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomersWithPendingOrders">
+
+         <wsdl:input message="impl:getCustomersWithPendingOrdersRequest" name="getCustomersWithPendingOrdersRequest"/>
+
+         <wsdl:output message="impl:getCustomersWithPendingOrdersResponse" name="getCustomersWithPendingOrdersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProductsWithPendingOrders">
+
+         <wsdl:input message="impl:getProductsWithPendingOrdersRequest" name="getProductsWithPendingOrdersRequest"/>
+
+         <wsdl:output message="impl:getProductsWithPendingOrdersResponse" name="getProductsWithPendingOrdersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProductsWithoutOrders">
+
+         <wsdl:input message="impl:getProductsWithoutOrdersRequest" name="getProductsWithoutOrdersRequest"/>
+
+         <wsdl:output message="impl:getProductsWithoutOrdersResponse" name="getProductsWithoutOrdersResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OrderServiceWSImplSoapBinding" type="impl:OrderServiceWSImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getCustInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOrders">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOrdersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOrdersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCustomersWithPendingOrders">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCustomersWithPendingOrdersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCustomersWithPendingOrdersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProductsWithPendingOrders">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProductsWithPendingOrdersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProductsWithPendingOrdersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProductsWithoutOrders">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProductsWithoutOrdersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProductsWithoutOrdersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OrderServiceWSImplService">
+
+      <wsdl:port binding="impl:OrderServiceWSImplSoapBinding" name="OrderServiceWSImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/LeatherShopWS/services/OrderServiceWSImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,125 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OrderServiceWSImplService WSDL service -->
+
+  <service name="OrderServiceWSImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="OrderServiceWSImplService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="OrderServiceWSImpl"/>
+      <parameter name="className" value="webservices.OrderServiceWSImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="OrderServiceWSImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getCustInfo" qname="operNS:getCustInfo" xmlns:operNS="http://webservices" returnQName="retNS:getCustInfoReturn" xmlns:retNS="http://webservices" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices" returnItemQName="tns:item" xmlns:tns="http://webservices" soapAction="" >
+        <parameter qname="pns:orderId" xmlns:pns="http://webservices" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOrders" qname="operNS:getOrders" xmlns:operNS="http://webservices" returnQName="retNS:getOrdersReturn" xmlns:retNS="http://webservices" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices" returnItemQName="tns:item" xmlns:tns="http://webservices" soapAction="" >
+        <parameter qname="pns:date" xmlns:pns="http://webservices" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getCustomersWithPendingOrders" qname="operNS:getCustomersWithPendingOrders" xmlns:operNS="http://webservices" returnQName="retNS:getCustomersWithPendingOrdersReturn" xmlns:retNS="http://webservices" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices" returnItemQName="tns:item" xmlns:tns="http://webservices" soapAction="" >
+      </operation>
+      <operation name="getProductsWithPendingOrders" qname="operNS:getProductsWithPendingOrders" xmlns:operNS="http://webservices" returnQName="retNS:getProductsWithPendingOrdersReturn" xmlns:retNS="http://webservices" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices" returnItemQName="tns:item" xmlns:tns="http://webservices" soapAction="" >
+      </operation>
+      <operation name="getProductsWithoutOrders" qname="operNS:getProductsWithoutOrders" xmlns:operNS="http://webservices" returnQName="retNS:getProductsWithoutOrdersReturn" xmlns:retNS="http://webservices" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://webservices" returnItemQName="tns:item" xmlns:tns="http://webservices" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getProductsWithPendingOrders getProductsWithoutOrders getCustomersWithPendingOrders getCustInfo getOrders"/>
+
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getOrdersResponse"
+        type="java:webservices.GetOrdersResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getProductsWithPendingOrders"
+        type="java:webservices.GetProductsWithPendingOrders"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getCustomersWithPendingOrdersResponse"
+        type="java:webservices.GetCustomersWithPendingOrdersResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getCustomersWithPendingOrders"
+        type="java:webservices.GetCustomersWithPendingOrders"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://webservices"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getCustInfo"
+        type="java:webservices.GetCustInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getProductsWithoutOrders"
+        type="java:webservices.GetProductsWithoutOrders"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getProductsWithPendingOrdersResponse"
+        type="java:webservices.GetProductsWithPendingOrdersResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getOrders"
+        type="java:webservices.GetOrders"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getProductsWithoutOrdersResponse"
+        type="java:webservices.GetProductsWithoutOrdersResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://webservices"
+        qname="ns:>getCustInfoResponse"
+        type="java:webservices.GetCustInfoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
